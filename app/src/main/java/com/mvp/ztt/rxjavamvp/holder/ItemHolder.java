@@ -29,7 +29,7 @@ public class ItemHolder extends BaseHolder<Repo> {
         RxView.clicks(textView1)
                 .throttleFirst(500, TimeUnit.MILLISECONDS)
                 .subscribe((Void) -> {
-                    RxBus.getDefault().post(R.id.text1, "code = " + data.getCode());
+                    RxBus.getDefault().post(R.id.text1, "position = " + getAdapterPosition());
                 });
         //设置textView2点击事件
         RxView.clicks(textView2)

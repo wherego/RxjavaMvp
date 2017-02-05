@@ -26,7 +26,7 @@ public class TestAdapter extends RecyclerView.Adapter<ItemHolder> {
 
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(UIUtil.getContext()).inflate(R.layout.item_holder, null, false);
+        View inflate = LayoutInflater.from(UIUtil.getContext()).inflate(R.layout.item_holder, parent, false);
         ItemHolder itemHolder = new ItemHolder(inflate);
         return itemHolder;
     }
