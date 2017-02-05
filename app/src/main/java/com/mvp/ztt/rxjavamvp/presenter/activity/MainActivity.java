@@ -12,6 +12,7 @@ import com.mvp.ztt.rxjavamvp.model.bean.Repo;
 import com.mvp.ztt.rxjavamvp.presenter.ActivityPresenter;
 import com.mvp.ztt.rxjavamvp.utils.RxBus;
 import com.mvp.ztt.rxjavamvp.view.act_delegate.MainActivityDelegate;
+import com.trello.rxlifecycle.android.ActivityEvent;
 
 import java.util.List;
 
@@ -22,17 +23,17 @@ import rx.schedulers.Schedulers;
 
 public class MainActivity extends ActivityPresenter<MainActivityDelegate> implements SwipeRefreshLayout.OnRefreshListener {
 
-    private Subscription octocat;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         show();
     }
+
     private void show() {
-        octocat = Api.getInstance().listRepos("octocat")
+        Api.getInstance().listRepos("octocat")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(new Subscriber<List<Repo>>() {
                     @Override
                     public void onCompleted() {
@@ -88,14 +89,6 @@ public class MainActivity extends ActivityPresenter<MainActivityDelegate> implem
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (!octocat.isUnsubscribed()) {
-            octocat.unsubscribe();
-        }
     }
 
     @Override
