@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.mvp.ztt.rxjavamvp.R;
+import com.mvp.ztt.rxjavamvp.adapter.BaseAdapter;
 import com.mvp.ztt.rxjavamvp.adapter.TestAdapter;
 import com.mvp.ztt.rxjavamvp.model.bean.Repo;
 import com.mvp.ztt.rxjavamvp.view.AppViewDelegate;
@@ -58,5 +59,9 @@ public class MainActivityDelegate extends AppViewDelegate {
 
     public void setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener listener) {
         refreshLayout.setOnRefreshListener(listener);
+    }
+
+    public void setAdapterItemClickListener(BaseAdapter.OnRecyclerViewItemClickListener listener) {
+        adapter.setOnItemClickListener(listener);
     }
 }

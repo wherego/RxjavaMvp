@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.mvp.ztt.rxjavamvp.R;
+import com.mvp.ztt.rxjavamvp.adapter.BaseAdapter;
 import com.mvp.ztt.rxjavamvp.model.Api;
 import com.mvp.ztt.rxjavamvp.model.bean.Repo;
 import com.mvp.ztt.rxjavamvp.presenter.ActivityPresenter;
 import com.mvp.ztt.rxjavamvp.utils.RxBus;
+import com.mvp.ztt.rxjavamvp.utils.UIUtil;
 import com.mvp.ztt.rxjavamvp.view.act_delegate.MainActivityDelegate;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
@@ -55,14 +58,19 @@ public class MainActivity extends ActivityPresenter<MainActivityDelegate> implem
 
     @Override
     protected void bindEventListener() {
-        RxBus.getDefault().toObservable(R.id.text1, String.class)
-                .subscribe(s -> {
-                    Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
-                });
-        RxBus.getDefault().toObservable(R.id.text2, String.class)
-                .subscribe(s -> {
-                    Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
-                });
+        viewDelegate.setAdapterItemClickListener(new BaseAdapter.OnRecyclerViewItemClickListener<Repo>() {
+            @Override
+            public void onItemClick(View view, int position, Repo data) {
+                switch (view.getId()) {
+                    case R.id.text1:
+                        Toast.makeText(UIUtil.getContext(), "position = " + position, Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.text2:
+                        Toast.makeText(UIUtil.getContext(), "code =" + data.getCode(), Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
         viewDelegate.setOnRefreshListener(this);
     }
 
