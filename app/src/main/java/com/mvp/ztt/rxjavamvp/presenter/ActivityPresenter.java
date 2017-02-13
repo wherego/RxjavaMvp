@@ -30,6 +30,7 @@ public abstract class ActivityPresenter<V extends IViewDelegate> extends BaseAct
         setContentView(viewDelegate.getRootView());
         viewDelegate.initWidget();
         initToolbar();
+
         bindEventListener();
     }
 

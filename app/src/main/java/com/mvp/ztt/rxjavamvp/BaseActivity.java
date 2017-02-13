@@ -2,7 +2,6 @@ package com.mvp.ztt.rxjavamvp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 

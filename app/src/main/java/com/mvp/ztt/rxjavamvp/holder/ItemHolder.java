@@ -24,12 +24,8 @@ public class ItemHolder extends BaseHolder<Repo> {
         super(itemView);
         textView1 = (TextView) itemView.findViewById(R.id.text1);
         textView2 = (TextView) itemView.findViewById(R.id.text2);
-        RxView.clicks(textView1).throttleFirst(500, TimeUnit.MILLISECONDS).subscribe(aVoid -> {
-            click(textView1);
-        });
-        RxView.clicks(textView2).throttleFirst(500, TimeUnit.MILLISECONDS).subscribe(aVoid -> {
-            click(textView2);
-        });
+        textView1.setOnClickListener(this);
+        textView2.setOnClickListener(this);
     }
 
     @Override

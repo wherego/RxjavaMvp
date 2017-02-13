@@ -13,18 +13,13 @@ import java.util.concurrent.TimeUnit;
  * 描述:
  */
 
-public abstract class BaseHolder<D> extends RecyclerView.ViewHolder {
+public abstract class BaseHolder<D> extends RecyclerView.ViewHolder implements View.OnClickListener {
     protected OnViewClickListener mOnViewClickListener = null;
     private D data;
 
     public BaseHolder(View itemView) {
         super(itemView);
-
-        RxView.clicks(itemView)
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
-                .subscribe(aVoid -> {
-                    click(itemView);
-                });
+        itemView.setOnClickListener(this);
     }
 
     /**
@@ -45,9 +40,10 @@ public abstract class BaseHolder<D> extends RecyclerView.ViewHolder {
      */
     public abstract void refresh();
 
-    protected void click(View view) {
+    @Override
+    public void onClick(View v) {
         if (mOnViewClickListener != null) {
-            mOnViewClickListener.onViewClick(view, getAdapterPosition(), data);
+            mOnViewClickListener.onViewClick(v, getAdapterPosition(), data);
         }
     }
 

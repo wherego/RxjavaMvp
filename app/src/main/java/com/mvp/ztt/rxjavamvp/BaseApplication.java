@@ -2,6 +2,7 @@ package com.mvp.ztt.rxjavamvp;
 
 import android.app.Application;
 import android.content.Context;
+import android.widget.Toast;
 
 /**
  * Created by zhangtaotao on 17/2/5.
@@ -20,4 +21,5 @@ public class BaseApplication extends Application {
     public static Context getContext() {
         return context;
     }
+
 }
