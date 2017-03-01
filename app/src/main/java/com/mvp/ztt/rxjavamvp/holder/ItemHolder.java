@@ -3,11 +3,9 @@ package com.mvp.ztt.rxjavamvp.holder;
 import android.view.View;
 import android.widget.TextView;
 
-import com.jakewharton.rxbinding.view.RxView;
 import com.mvp.ztt.rxjavamvp.R;
 import com.mvp.ztt.rxjavamvp.model.bean.Repo;
 
-import java.util.concurrent.TimeUnit;
 
 
 /**

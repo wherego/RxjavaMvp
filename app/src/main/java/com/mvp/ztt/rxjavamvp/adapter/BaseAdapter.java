@@ -21,11 +21,13 @@ public abstract class BaseAdapter<D> extends RecyclerView.Adapter<BaseHolder> {
     @Override
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         BaseHolder baseHolder = getHolder(parent, viewType);
-        baseHolder.setOnItemClickListener(((view, position, data) -> {
-            if (onItemClickListener != null) {
+
+        baseHolder.setOnItemClickListener(new BaseHolder.OnViewClickListener() {
+            @Override
+            public void onViewClick(View view, int position, Object data) {
                 onItemClickListener.onItemClick(view, position, data);
             }
-        }));
+        });
         return baseHolder;
     }
 

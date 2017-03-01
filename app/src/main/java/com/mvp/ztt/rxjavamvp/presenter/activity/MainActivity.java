@@ -12,7 +12,6 @@ import com.mvp.ztt.rxjavamvp.adapter.BaseAdapter;
 import com.mvp.ztt.rxjavamvp.model.Api;
 import com.mvp.ztt.rxjavamvp.model.bean.Repo;
 import com.mvp.ztt.rxjavamvp.presenter.ActivityPresenter;
-import com.mvp.ztt.rxjavamvp.utils.RxBus;
 import com.mvp.ztt.rxjavamvp.utils.UIUtil;
 import com.mvp.ztt.rxjavamvp.view.act_delegate.MainActivityDelegate;
 import com.trello.rxlifecycle.android.ActivityEvent;
@@ -20,7 +19,6 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 import java.util.List;
 
 import rx.Subscriber;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 

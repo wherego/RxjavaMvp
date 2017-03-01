@@ -3,9 +3,6 @@ package com.mvp.ztt.rxjavamvp.holder;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.jakewharton.rxbinding.view.RxView;
-
-import java.util.concurrent.TimeUnit;
 
 
 /**
